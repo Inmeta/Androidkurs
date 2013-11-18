@@ -1,1 +1,0 @@
-android create project --target 4 --name InmetaAndroidKurs --path . --activity MainActivity --package com.inmeta.androidkurs
