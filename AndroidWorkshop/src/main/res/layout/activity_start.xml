@@ -10,7 +10,7 @@
         android:gravity="center_horizontal"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text="@string/default_temp"
+        android:text="@string/temp_overskrift"
         android:textAppearance="@android:style/TextAppearance.Large" />
 
 
