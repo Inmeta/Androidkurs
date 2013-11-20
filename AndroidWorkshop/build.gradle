@@ -23,9 +23,9 @@ android {
 }
 
 dependencies {
-	compile 'com.android.support:appcompat-v7:+'
-    compile('org.simpleframework:simple-xml:2.7.+'){
-        exclude module: 'stax'
-        exclude module: 'xpp3'
+    compile 'com.android.support:appcompat-v7:+'
+    compile('org.simpleframework:simple-xml:2.7.1') {
+        exclude group: 'stax', module: 'stax-api'
+        exclude group: 'xpp3', module: 'xpp3'
     }
 }

@@ -17,13 +17,35 @@ import java.util.List;
 @Element(name = "time")
 public class Time implements Serializable {
 
-    @Attribute (required = false)
+    @Attribute(name = "datatype", required = false)
     private String dataType;
+
+    @Attribute(name = "from")
+    private String from;
+
+    @Attribute(name = "to")
+    private String to;
 
     private List<Location> locationList = new ArrayList<Location>();
 
     public String getDataType() {
         return dataType;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     public void setDataType(String dataType) {
@@ -40,11 +62,12 @@ public class Time implements Serializable {
         this.locationList = locationList;
     }
 
-
     @Override
     public String toString() {
         return "Time{" +
-                "dataType='" + dataType + '\'' +
+                "from='" + from + '\'' +
+                ", to='" + to + '\'' +
+                ", dataType='" + dataType + '\'' +
                 ", locationList=" + locationList +
                 '}';
     }

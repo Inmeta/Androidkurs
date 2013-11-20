@@ -8,6 +8,6 @@ import com.inmeta.androidworkshop.domain.model.WeatherData;
  */
 public interface IMetAPI {
 
-    public WeatherData getLocationData(float lat, float lng);
+    public WeatherData getLocationData(float lat, float lng) throws Exception;
 
 }

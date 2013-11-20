@@ -1,47 +1,45 @@
 package com.inmeta.androidworkshop;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.inmeta.androidworkshop.domain.model.Product;
 import com.inmeta.androidworkshop.domain.model.WeatherData;
 
-
 /**
- * This is this applications start Activity. The class name is referenced from Androidmanifest.xml
+ * This is this applications start Activity.
  *
  * @author Glenn Bech
  */
 public class StartActivity extends ActionBarActivity implements WeatherDataListener {
 
-
     public static final String KEY_WEATHERDATA = "key_weatherdata";
-    private WeatherData weatherData;
 
+    public static final float LAT = 63.44f;
+    public static final float LNG = 10.37f;
+
+    private WeatherData weatherData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_start);
 
         if (savedInstanceState != null) {
             weatherData = (WeatherData) savedInstanceState.getSerializable(KEY_WEATHERDATA);
             doLayout();
         }
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
         if (weatherData == null) {
-            GetWeatherDataTask task = new GetWeatherDataTask(50.0f, 50.0f, this);
+            GetWeatherDataTask task = new GetWeatherDataTask(LAT, LNG, this);
             task.execute(null);
         }
-
     }
 
     @Override
@@ -58,7 +56,6 @@ public class StartActivity extends ActionBarActivity implements WeatherDataListe
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.start, menu);
         return true;
     }
@@ -74,8 +71,8 @@ public class StartActivity extends ActionBarActivity implements WeatherDataListe
         switch (item.getItemId()) {
             case R.id.action_settings:
                 return true;
-            }
-            return super.onOptionsItemSelected(item);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -92,9 +89,9 @@ public class StartActivity extends ActionBarActivity implements WeatherDataListe
     }
 
     private void doLayout() {
-        setContentView(R.layout.activity_start);
         TextView tvTemperature = (TextView) findViewById(R.id.temperature);
         float temperatureValue = weatherData.getProduct().getTimeList().get(0).getLocationList().get(0).getTemperature().getValue();
         tvTemperature.setText(String.valueOf(temperatureValue));
+
     }
 }
